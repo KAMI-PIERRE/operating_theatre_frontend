@@ -153,7 +153,8 @@ function Dashboard() {
       return { success: true };
     } catch (error) {
       console.error("Latest data request failed", error);
-      setConnectionError(error.response?.data?.message || "Unable to reach the Flask backend. The dashboard is keeping the last known values.");
+      const message = error.response?.data?.message || "Unable to reach the backend. The dashboard is showing the last known values until the service comes back.";
+      setConnectionError(message);
       return { success: false };
     } finally {
       latestRequestRef.current = false;
@@ -237,7 +238,7 @@ function Dashboard() {
     const failed = results.some((result) => result.status === "rejected" || (result.status === "fulfilled" && !result.value?.success));
 
     if (failed) {
-      setConnectionError("One or more refreshes failed. The dashboard is still showing the last known values.");
+      setConnectionError("One or more refreshes failed. The dashboard is still showing the last known values until the backend responds again.");
     }
 
     setRefreshing(false);
