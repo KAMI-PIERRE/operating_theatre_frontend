@@ -1,11 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://operating-theatre-backend.onrender.com/api/$1"
+      "source": "/api/:path*",
+      "destination": "https://operating-theatre-backend.onrender.com/api/:path*"
     },
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ]

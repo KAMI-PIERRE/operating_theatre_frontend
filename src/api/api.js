@@ -5,7 +5,7 @@ const api = axios.create({
     import.meta.env.VITE_API_BASE_URL ||
     "https://operating-theatre-backend.onrender.com/api",
 
-  timeout: 20000,
+  timeout: 35000,
 
   headers: {
     "Content-Type": "application/json",
